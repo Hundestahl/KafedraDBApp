@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportKafedra" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="124e3a26-eb63-4a47-8665-2294e4f0a242">
+	<property name="com.jaspersoft.studio.data.sql.tables" value="ZGJvLiI/Pz8/Pz8iICwxNSwxNSxlN2Y1ZTMyNS0xZDljLTQwMzUtODU2YS1hYmI2NzE2N2E5MjY7"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Lr2KafedraData Adapter"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset1" uuid="6b64f2db-0fcb-405c-a291-92d90b8b321b">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Lr2KafedraData Adapter"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT SUM(dbo."Нагрузка_преподавателя_групповая"."Объём_часов") AS 'Объём часов',
+dbo."Нагрузка_преподавателя_групповая"."Номер_группы",
+dbo."Вид_занятий"."Вид_занятий",
+dbo."Дисциплина"."Название_дисциплины",
+dbo."Преподаватель"."ФИО",
+dbo."Должность"."Название_должности",
+YEAR(dbo."Семестр"."Начало_учебного_года") AS 'Начало_учебного_года',
+dbo."Семестр"."Номер_семестра"
+FROM dbo."Нагрузка_преподавателя_групповая"
+INNER JOIN dbo."Вид_занятий" ON dbo."Нагрузка_преподавателя_групповая"."Код_вида_занятия" = dbo."Вид_занятий"."Код_вида_занятия"
+INNER JOIN dbo."Группа" ON dbo."Нагрузка_преподавателя_групповая"."Номер_группы" = dbo."Группа"."Номер_группы"
+INNER JOIN dbo."Дисциплина" ON dbo."Нагрузка_преподавателя_групповая"."Код_дисциплины" = dbo."Дисциплина"."Код_дисциплины"
+INNER JOIN dbo."Преподаватель" ON dbo."Нагрузка_преподавателя_групповая"."Код_преподавателя" = dbo."Преподаватель"."Код_преподавателя"
+INNER JOIN dbo."Должность" ON dbo."Преподаватель"."Код_должности" = dbo."Должность"."Код_должности"
+INNER JOIN dbo."Семестр" ON dbo."Нагрузка_преподавателя_групповая"."Код_семестра" = dbo."Семестр"."Код_семестра"
+GROUP BY dbo."Нагрузка_преподавателя_групповая"."Номер_группы",
+dbo."Вид_занятий"."Вид_занятий",
+dbo."Дисциплина"."Название_дисциплины",
+dbo."Преподаватель"."ФИО",
+dbo."Должность"."Название_должности",
+dbo."Семестр"."Начало_учебного_года",
+dbo."Семестр"."Номер_семестра"
+ORDER BY 'Начало_учебного_года']]>
+		</queryString>
+		<field name="Объём часов" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Объём часов"/>
+			<property name="com.jaspersoft.studio.field.label" value="Объём часов"/>
+		</field>
+		<field name="Номер_группы" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Номер_группы"/>
+			<property name="com.jaspersoft.studio.field.label" value="Номер_группы"/>
+		</field>
+		<field name="Вид_занятий" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Вид_занятий"/>
+			<property name="com.jaspersoft.studio.field.label" value="Вид_занятий"/>
+		</field>
+		<field name="Название_дисциплины" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Название_дисциплины"/>
+			<property name="com.jaspersoft.studio.field.label" value="Название_дисциплины"/>
+		</field>
+		<field name="ФИО" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="ФИО"/>
+			<property name="com.jaspersoft.studio.field.label" value="ФИО"/>
+		</field>
+		<field name="Название_должности" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Название_должности"/>
+			<property name="com.jaspersoft.studio.field.label" value="Название_должности"/>
+		</field>
+		<field name="Начало_учебного_года" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Начало_учебного_года"/>
+			<property name="com.jaspersoft.studio.field.label" value="Начало_учебного_года"/>
+		</field>
+		<field name="Номер_семестра" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Номер_семестра"/>
+			<property name="com.jaspersoft.studio.field.label" value="Номер_семестра"/>
+		</field>
+	</subDataset>
+	<subDataset name="Dataset2" uuid="2293f957-a473-4690-a16f-ca7939b0caf8">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Lr2KafedraData Adapter"/>
+		<queryString language="SQL">
+			<![CDATA[SELECT SUM(dbo."Нагрузка_преподавателя_групповая"."Объём_часов") AS 'Объём часов',
+
+dbo."Нагрузка_преподавателя_групповая"."Номер_группы",
+
+dbo."Вид_занятий"."Вид_занятий",
+
+dbo."Дисциплина"."Название_дисциплины",
+
+dbo."Преподаватель"."ФИО",
+
+dbo."Должность"."Название_должности",
+
+YEAR(dbo."Семестр"."Начало_учебного_года") AS 'Начало_учебного_года',
+
+dbo."Семестр"."Номер_семестра"
+
+FROM dbo."Нагрузка_преподавателя_групповая"
+
+INNER JOIN dbo."Вид_занятий" ON dbo."Нагрузка_преподавателя_групповая"."Код_вида_занятия" = dbo."Вид_занятий"."Код_вида_занятия"
+
+INNER JOIN dbo."Группа" ON dbo."Нагрузка_преподавателя_групповая"."Номер_группы" = dbo."Группа"."Номер_группы"
+
+INNER JOIN dbo."Дисциплина" ON dbo."Нагрузка_преподавателя_групповая"."Код_дисциплины" = dbo."Дисциплина"."Код_дисциплины"
+
+INNER JOIN dbo."Преподаватель" ON dbo."Нагрузка_преподавателя_групповая"."Код_преподавателя" = dbo."Преподаватель"."Код_преподавателя"
+
+INNER JOIN dbo."Должность" ON dbo."Преподаватель"."Код_должности" = dbo."Должность"."Код_должности"
+
+INNER JOIN dbo."Семестр" ON dbo."Нагрузка_преподавателя_групповая"."Код_семестра" = dbo."Семестр"."Код_семестра"
+
+GROUP BY dbo."Нагрузка_преподавателя_групповая"."Номер_группы",
+
+dbo."Вид_занятий"."Вид_занятий",
+
+dbo."Дисциплина"."Название_дисциплины",
+
+dbo."Преподаватель"."ФИО",
+
+dbo."Должность"."Название_должности",
+
+dbo."Семестр"."Начало_учебного_года",
+
+dbo."Семестр"."Номер_семестра"
+
+ORDER BY 'Начало_учебного_года']]>
+		</queryString>
+		<field name="Объём часов" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Объём часов"/>
+			<property name="com.jaspersoft.studio.field.label" value="Объём часов"/>
+		</field>
+		<field name="Номер_группы" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Номер_группы"/>
+			<property name="com.jaspersoft.studio.field.label" value="Номер_группы"/>
+		</field>
+		<field name="Вид_занятий" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Вид_занятий"/>
+			<property name="com.jaspersoft.studio.field.label" value="Вид_занятий"/>
+		</field>
+		<field name="Название_дисциплины" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Название_дисциплины"/>
+			<property name="com.jaspersoft.studio.field.label" value="Название_дисциплины"/>
+		</field>
+		<field name="ФИО" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="ФИО"/>
+			<property name="com.jaspersoft.studio.field.label" value="ФИО"/>
+		</field>
+		<field name="Название_должности" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="Название_должности"/>
+			<property name="com.jaspersoft.studio.field.label" value="Название_должности"/>
+		</field>
+		<field name="Начало_учебного_года" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Начало_учебного_года"/>
+			<property name="com.jaspersoft.studio.field.label" value="Начало_учебного_года"/>
+		</field>
+		<field name="Номер_семестра" class="java.lang.Integer">
+			<property name="com.jaspersoft.studio.field.name" value="Номер_семестра"/>
+			<property name="com.jaspersoft.studio.field.label" value="Номер_семестра"/>
+		</field>
+		<variable name="SumVolume" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{Объём часов}]]></variableExpression>
+			<initialValueExpression><![CDATA[0]]></initialValueExpression>
+		</variable>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM dbo."Группа"]]>
+	</queryString>
+	<field name="Номер_группы" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Номер_группы"/>
+		<property name="com.jaspersoft.studio.field.label" value="Номер_группы"/>
+	</field>
+	<title>
+		<band height="34" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="550" height="34" uuid="9a15b8b0-67f0-4cc1-aff2-f1125a4ecaf0"/>
+				<textElement textAlignment="Center">
+					<font size="25"/>
+				</textElement>
+				<text><![CDATA[Отчёт по нагрузке сотрудников кафедры]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="430" y="0" width="120" height="30" uuid="326cb5fd-bb94-4b62-8a00-aa698c4992b2"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="190" splitType="Stretch">
+			<componentElement>
+				<reportElement x="10" y="30" width="550" height="160" uuid="44dc0184-1ba0-4627-b670-006d4d903775">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset2" uuid="0b507851-ed1a-4d20-8cee-bd9e71cce6ce">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="73" uuid="74acbf34-ec57-484d-8a3e-0b2c3d5a244f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableFooter style="Table_TH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="73" height="15" uuid="468e393f-8ff2-4034-ad58-243df8d0a6f3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Всего:]]></text>
+							</staticText>
+							<textField>
+								<reportElement x="0" y="15" width="73" height="15" uuid="72ef4346-5bc6-491b-a400-c8dda9487ba7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{SumVolume}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="73" height="30" uuid="50c9a624-334d-4c19-89b1-9245d6131d5d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Объём часов]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="40">
+							<textField>
+								<reportElement x="0" y="0" width="73" height="40" uuid="c3ef136a-51c6-4631-a7c9-834a528b07ed"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Объём часов}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="77" uuid="1ee70d04-8950-49d3-b844-0003f7421ef3">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="77" height="30" uuid="72baecc8-84b9-44e0-92d8-c13fcf82cfba"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Номер группы]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="40">
+							<textField>
+								<reportElement x="0" y="0" width="77" height="40" uuid="df113ffa-f042-428c-842c-9096003e5635"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Номер_группы}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="129" uuid="c2cc812c-a4e5-4536-9f77-e838b08262a0">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="129" height="30" uuid="39a31894-390f-4565-9012-3df66393f1e3"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Дисциплина]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="40">
+							<textField>
+								<reportElement x="0" y="0" width="129" height="20" uuid="4368eb64-2032-4397-9c90-ed200eb3f5ae"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Название_дисциплины}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="20" width="129" height="20" uuid="514aab19-648f-460b-9468-a6fafb5aa550"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Вид_занятий}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="171" uuid="eb1cae51-03ac-4cdd-bb6d-23547d21991d">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="171" height="30" uuid="3965f5f8-7172-47e1-8882-3549fd429c9d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Сотрудник]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="40">
+							<textField>
+								<reportElement x="0" y="0" width="171" height="20" uuid="3a4f3900-d0c4-41e1-bc80-17bc7bbcf86d"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ФИО}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="20" width="171" height="20" uuid="65a104f6-f53c-43d7-a6d4-9875da8c6e3f"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Название_должности}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="102" uuid="333dde87-00f6-455e-9649-5fc965ca5111">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="102" height="15" uuid="86d7debe-0eed-46db-8a5d-df093ae30a4c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Начало учебного года]]></text>
+							</staticText>
+							<staticText>
+								<reportElement x="0" y="15" width="102" height="15" uuid="6dc37d4d-f815-4b43-9bc1-80be10b031a5"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<text><![CDATA[Семестр]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table_TD" height="40">
+							<textField>
+								<reportElement x="0" y="0" width="102" height="20" uuid="a1d922a7-5748-4035-a418-09443dc32ece"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Начало_учебного_года}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement x="0" y="20" width="102" height="20" uuid="adff0f76-2f22-41d2-a7be-ad7442201667">
+									<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+								</reportElement>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{Номер_семестра}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="450" y="0" width="100" height="19" uuid="2622e673-cc10-4a82-a1ea-aaa1541905b5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
